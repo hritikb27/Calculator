@@ -1,0 +1,6 @@
+.calculator{
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    column-gap: 5px;
+    row-gap: 5px;
+}
