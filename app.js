@@ -24,51 +24,46 @@ digits.forEach(digit=>{
 
 //Basic Calculator Functions
 function add(a,b){
-    const c = parseInt(a);
-    const d = parseInt(b);
-    return(c+d);
+    return(a+b);
 };
 
 function subtract(a,b){
-    const c = parseInt(a);
-    const d = parseInt(b);
-    return (c-d);
+    return (a-b);
 };
 
 function multiply(a,b){
-    const c = parseInt(a);
-    const d = parseInt(b);
-    return (c*d);
+    return (a*b);
 };
 
 function divide(a,b){
-    const c = parseInt(a);
-    const d = parseInt(b);
-    return (c/d);
+    return (a/b);
 };
 
 //Calculation Algorithm
 function getSumValue(){
     const detect = getValue.value;
+    let whichOperator;
+    if(detect.includes('+')) whichOperator = ('+');
+    else if(detect.includes('-')) whichOperator = ('-');
+    else if(detect.includes('*')) whichOperator = ('*');
+    else if(detect.includes('/')) whichOperator = ('/');
+
+    const findOperator = detect.split(whichOperator);
+
+    findOperator[0]= parseFloat(findOperator[0]);
+    findOperator[1]= parseFloat(findOperator[1]);
+
     if(detect.includes('+')){
-        const a = detect.split('+');
-        const sum = add(a[0],a[1]);
-        getValue.value = sum;
+        getValue.value = add(findOperator[0],findOperator[1]);;
     }
     else if(detect.includes('-')){
-        const a = detect.split('-');
-        const sum = subtract(a[0],a[1]);
-        getValue.value = sum;
+        getValue.value = subtract(findOperator[0],findOperator[1]);;
     }
     else if(detect.includes('*')){
-        const a = detect.split('*');
-        const sum = multiply(a[0],a[1]);
-        getValue.value = sum;
+        getValue.value = multiply(findOperator[0],findOperator[1]);
     }
     else if(detect.includes('/')){
-        const a = detect.split('/');
-        const sum = divide(a[0],a[1]);
-        getValue.value = sum;
+        getValue.value = divide(findOperator[0],findOperator[1]);
     }
 }
 
