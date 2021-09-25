@@ -39,30 +39,32 @@ function divide(a,b){
     return (a/b);
 };
 
+//Find Operator
+function getOperator(){
+    const detect = getValue.value;
+    if(detect.includes('+')) return('+');
+    else if(detect.includes('-')) return('-');
+    else if(detect.includes('*')) return('*');
+    else if(detect.includes('/')) return('/');
+}
+
 //Calculation Algorithm
 function getSumValue(){
-    const detect = getValue.value;
-    let whichOperator;
-    if(detect.includes('+')) whichOperator = ('+');
-    else if(detect.includes('-')) whichOperator = ('-');
-    else if(detect.includes('*')) whichOperator = ('*');
-    else if(detect.includes('/')) whichOperator = ('/');
-
-    const findOperator = detect.split(whichOperator);
-
+    const whichOperator = getOperator();
+    const findOperator = getValue.value.split(getOperator());
     findOperator[0]= parseFloat(findOperator[0]);
     findOperator[1]= parseFloat(findOperator[1]);
 
-    if(detect.includes('+')){
+    if(whichOperator==='+'){
         getValue.value = add(findOperator[0],findOperator[1]);;
     }
-    else if(detect.includes('-')){
+    else if(whichOperator==='-'){
         getValue.value = subtract(findOperator[0],findOperator[1]);;
     }
-    else if(detect.includes('*')){
+    else if(whichOperator==='*'){
         getValue.value = multiply(findOperator[0],findOperator[1]);
     }
-    else if(detect.includes('/')){
+    else if(whichOperator==='/'){
         getValue.value = divide(findOperator[0],findOperator[1]);
     }
 }
